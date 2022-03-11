@@ -1,0 +1,10 @@
+{
+    "watch": [
+        "src"
+    ],
+    "verbose": false,
+    "quiet": true,
+    "ext": ".ts,.js",
+    "ignore": ["test/*", "docs/*"],
+    "exec": "ts-node ./src/main.ts"
+}
