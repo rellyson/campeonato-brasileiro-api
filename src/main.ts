@@ -1,6 +1,7 @@
 import express, { Request, Response } from 'express';
 
 import exempleRoute from './router/exemple';
+import teamRoute from './router/team';
 
 const app = express();
 const port = 3000;
@@ -10,6 +11,7 @@ app.get('/', (req: Request, res: Response) => {
 });
 
 app.use('/api/exemples', exempleRoute);
+app.use('/api/teams', teamRoute);
 
 app.listen(port, () => {
     console.log(`Listening on port ${port}`);
