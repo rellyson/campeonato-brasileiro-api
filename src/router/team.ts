@@ -1,4 +1,4 @@
-import { NextFunction, Request, Response, Router } from 'express';
+import { Router } from 'express';
 import { TeamController } from '../controllers/team';
 let router = Router();
 
