@@ -1,7 +1,7 @@
 import express, { Request, Response } from 'express';
 
-import exempleRoute from './router/exemple';
-import teamRoute from './router/team';
+import exempleRoute from './routers/exemple';
+import teamRoute from './routers/team';
 
 const app = express();
 const port = 3000;
