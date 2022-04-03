@@ -1,3 +1,7 @@
+/**
+ * Classe de transação time / jogador / time
+ */
+
 export class Transaction {
     public playerId: string;
     public playerName: string;

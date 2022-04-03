@@ -1,3 +1,7 @@
+/**
+ * Classe de jogador.
+ */
+
 import { Transaction } from "./transaction";
 
 export class Player {
