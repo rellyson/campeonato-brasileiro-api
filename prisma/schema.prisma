@@ -9,3 +9,62 @@ datasource db {
   provider = "mongodb"
   url      = env("DATABASE_URL")
 }
+
+model Club {
+  id                   String        @id @default(auto()) @map("_id") @db.ObjectId
+  name                 String
+  abbreviation         String        @unique
+  city                 String
+  country              Country       @relation(fields: [countryId], references: [id])
+  players              Player[]
+  outgoingTransactions Transaction[] @relation("outgoingClubTransaction")
+  incomingTransactions Transaction[] @relation("incomingClubTransaction")
+  countryId            String        @db.ObjectId
+  createdAt            DateTime      @default(now())
+  updatedAt            DateTime      @updatedAt
+}
+
+model Player {
+  id           String        @id @default(auto()) @map("_id") @db.ObjectId
+  fullName     String
+  birthDate    DateTime
+  country      Country       @relation(fields: [countryId], references: [id])
+  club         Club          @relation(fields: [clubId], references: [id])
+  transactions Transaction[]
+  clubId       String        @db.ObjectId
+  countryId    String        @db.ObjectId
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+}
+
+model Transaction {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  Player     Player?  @relation(fields: [playerId], references: [id])
+  value      Float
+  fromClub   Club?    @relation("outgoingClubTransaction", fields: [fromClubId], references: [id])
+  toClub     Club?    @relation("incomingClubTransaction", fields: [toClubId], references: [id])
+  fromClubId String?  @db.ObjectId
+  toClubId   String?  @db.ObjectId
+  playerId   String?  @db.ObjectId
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+model Country {
+  id        String    @id @default(auto()) @map("_id") @db.ObjectId
+  name      String    @unique
+  continent Continent
+  clubs     Club[]
+  players   Player[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+enum Continent {
+  AMERICA
+  AFRICA
+  EUROPE
+  ASIA
+  OCEANIA
+  ANTARTIDA
+}
