@@ -21,4 +21,23 @@ export class TeamService {
         ];
         return teams;
     }
+
+    findOne(id: string) {
+        let team = {};
+        return team;
+    }
+
+    // Adicionar modelo Team
+    create(team: any) {
+        
+    }
+
+    // Adicionar modelo Team
+    update(id: string, team: any) {
+
+    }
+
+    delete(id: string) {
+
+    }
 }
