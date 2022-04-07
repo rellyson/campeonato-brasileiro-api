@@ -32,8 +32,9 @@ export class TeamController {
     create = (req: Request, res: Response, next: NextFunction) => {
         try {
             let team = req.body;
-            let teamSaved = this.service.create(team);
-            res.send(team).status(200);
+            console.log(req.body);
+            let teamCreated = this.service.create(team);
+            res.send(teamCreated).status(200);
         } catch (error) {
             res.send('Internal Server Error').status(500);
         }
@@ -43,8 +44,8 @@ export class TeamController {
         try {
             let id = req.params['id'];
             let team = req.body;
-            let teamSaved = this.service.update(id, team);
-            res.send(teamSaved).status(201);
+            let teamUpdated = this.service.update(id, team);
+            res.send(teamUpdated).status(201);
         } catch (error) {
             res.send('Internal Server Error').status(500);
         }
@@ -54,7 +55,7 @@ export class TeamController {
         try {
             let id = req.params['id'];
             this.service.delete(id);
-            res.send().status(204);
+            res.send(id).status(204);
         } catch (error) {
             res.send('Internal Server Error').status(500);
         }

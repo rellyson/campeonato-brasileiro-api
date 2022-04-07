@@ -1,3 +1,5 @@
+import { Team } from "../models/team";
+
 export class TeamService {
 
     getAll() {
@@ -19,25 +21,30 @@ export class TeamService {
                 stadium: 'Independência',
             },
         ];
+        // TODO: Implementar busca na base.
         return teams;
     }
 
-    findOne(id: string) {
-        let team = {};
+    findOne(id: string): Team {
+        let team = new Team();
+        // TODO: Implementar busca na base de dados.
         return team;
     }
 
     // Adicionar modelo Team
-    create(team: any) {
-        
+    create(team: Team): Team {
+        // TODO: Implementar inserção na base de dados.
+        return team;
     }
 
     // Adicionar modelo Team
-    update(id: string, team: any) {
-
+    update(id: string, team: Team) {
+        // TODO: Implementar update na base de dados.
+        return team;
     }
 
     delete(id: string) {
-
+        // TODO: Implementar deleção.
+        return id;
     }
 }

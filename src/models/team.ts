@@ -14,20 +14,20 @@ export class Team {
     public stadium: string;
 
     constructor(
-        id: string,
-        name: string,
-        transactions: Transaction[],
-        city: string,
-        state: string,
-        country: string,
-        stadium: string,
+        id?: string,
+        name?: string,
+        transactions?: Transaction[],
+        city?: string,
+        state?: string,
+        country?: string,
+        stadium?: string,
     ) {
-        this.id = id;
-        this.name = name;
-        this.transactions = transactions;
-        this.city = city;
-        this.state = state;
-        this.country = country;
-        this.stadium = stadium;
+        this.id = id ? id : '';
+        this.name = name ? name : '';
+        this.transactions = transactions ? transactions : new Array();
+        this.city = city ? city : '';
+        this.state = state ? state : '';
+        this.country = country ? country : '';
+        this.stadium = stadium ? stadium : '';
     }
 }
