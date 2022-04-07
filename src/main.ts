@@ -17,5 +17,6 @@ app.use('/api/exemples', exempleRoute);
 app.use('/api/teams', teamRoute);
 
 app.listen(port, () => {
+    // TODO: Implementar conexão com o banco aqui.
     console.log(`Listening on port ${port}`);
 });
