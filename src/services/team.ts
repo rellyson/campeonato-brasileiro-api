@@ -27,15 +27,17 @@ export class TeamService {
         return team;
     }
 
+    // Adicionar modelo Team
     create(team: any) {
         
     }
 
-    update() {
+    // Adicionar modelo Team
+    update(id: string, team: any) {
 
     }
 
-    delete() {
+    delete(id: string) {
 
     }
 }
