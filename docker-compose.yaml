@@ -1,5 +1,3 @@
-version: '3.7'
-
 services:
   api:
     container_name: cb-api
@@ -7,10 +5,13 @@ services:
       context: .
       dockerfile: Dockerfile
     command: yarn start:dev
+    ports:
+      - "3000:3000"
     volumes:
       - ./:/src/app
     environment:
       - NODE_ENV=development
+      - DATABASE_URL=mongodb://cbf:hexajaerealidade@mongo:27017/campeonato_brasileiro
 
   zookeeper:
     container_name: cb-zookeeper
@@ -20,7 +21,7 @@ services:
       ZOOKEEPER_TICK_TIME: 2000
     ports:
       - 22181:2181
-  
+
   kafka:
     container_name: cb-kafka
     image: confluentinc/cp-kafka:latest
@@ -35,3 +36,15 @@ services:
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
       KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+
+  mongo:
+    image: mongo:5.0.6-focal
+    container_name: cb-mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./.docker/mongo:/docker-entrypoint-initdb.d/mongo-init.js:ro
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=cbf
+      - MONGO_INITDB_ROOT_PASSWORD=hexajaerealidade
+      - MONGO_INITDB_DATABASE=campeonato_brasileiro

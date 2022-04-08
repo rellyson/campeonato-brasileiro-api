@@ -1,5 +1,3 @@
-import { Team } from "../models/team";
-
 export class TeamService {
 
     getAll() {
@@ -25,20 +23,20 @@ export class TeamService {
         return teams;
     }
 
-    findOne(id: string): Team {
-        let team = new Team();
+    findOne(id: string) {
+        let team = {};
         // TODO: Implementar busca na base de dados.
         return team;
     }
 
     // Adicionar modelo Team
-    create(team: Team): Team {
+    create(team: any) {
         // TODO: Implementar inserção na base de dados.
         return team;
     }
 
     // Adicionar modelo Team
-    update(id: string, team: Team) {
+    update(id: string, team: any) {
         // TODO: Implementar update na base de dados.
         return team;
     }

@@ -1,14 +1,9 @@
 import { NextFunction, Request, Response } from "express";
 
-import { TeamService } from "../services/team";
+import { TeamService } from "../services/team-service";
 
 export class TeamController {
-
-    service: TeamService = new TeamService();
-
-    static bootstrap() {
-        return new TeamController();
-    }
+    constructor(private service: TeamService) { }
 
     getAll = (req: Request, res: Response, next: NextFunction) => {
         try {
