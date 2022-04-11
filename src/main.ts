@@ -4,9 +4,9 @@ const bootstrap = () => {
 const port = process.env.PORT || '3000';
 const app = createExpressApp();
 
-app.listen(port, () => {
-    console.log(`Server is ready to accept connections at port ${port}`);
-});
+    app.listen(port, () => {
+        console.log(`Server is ready to accept connections at port ${port}`);
+    });
 }
 
-bootstrap()
+bootstrap();
