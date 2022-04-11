@@ -1,14 +1,14 @@
 import { NextFunction, Request, Response } from "express";
 
-import { TeamService } from "../services/team-service";
+import { ClubService } from "../services/club-service";
 
-export class TeamController {
-    constructor(private service: TeamService) { }
+export class ClubController {
+    constructor(private service: ClubService) { }
 
     getAll = (req: Request, res: Response, next: NextFunction) => {
         try {
-            let teams = this.service.getAll();
-            res.json(teams);
+            let clubs = this.service.getAll();
+            res.json(clubs);
         } catch (error) {
             res.send('Internal Server Error').status(500);
         }
@@ -17,8 +17,8 @@ export class TeamController {
     findOne = (req: Request, res: Response, next: NextFunction) => {
         try {
             let id = req.params['id'];
-            let team = this.service.findOne(id);
-            res.json(team);
+            let club = this.service.findOne(id);
+            res.json(club);
         } catch (error) {
             res.send('Internal Server Error').status(500);
         }
@@ -26,10 +26,10 @@ export class TeamController {
 
     create = (req: Request, res: Response, next: NextFunction) => {
         try {
-            let team = req.body;
+            let club = req.body;
             console.log(req.body);
-            let teamCreated = this.service.create(team);
-            res.send(teamCreated).status(200);
+            let clubCreated = this.service.create(club);
+            res.send(clubCreated).status(200);
         } catch (error) {
             res.send('Internal Server Error').status(500);
         }
@@ -38,9 +38,9 @@ export class TeamController {
     update = (req: Request, res: Response, next: NextFunction) => {
         try {
             let id = req.params['id'];
-            let team = req.body;
-            let teamUpdated = this.service.update(id, team);
-            res.send(teamUpdated).status(201);
+            let club = req.body;
+            let clubUpdated = this.service.update(id, club);
+            res.send(clubUpdated).status(201);
         } catch (error) {
             res.send('Internal Server Error').status(500);
         }

@@ -1,6 +1,6 @@
 import * as yup from "yup";
 
-export class CreateTeamDTO {
+export class CreateClubDTO {
     name!: string;
     transactions!: any[];
     city!: string;

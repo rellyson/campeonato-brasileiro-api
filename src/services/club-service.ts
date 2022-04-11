@@ -1,7 +1,9 @@
-export class TeamService {
+import { ClubServiceInterface } from "./interfaces/club-service.interface";
+
+export class ClubService implements ClubServiceInterface {
 
     getAll() {
-        let teams = [
+        let clubs = [
             {
                 id: '2d53a2d53d2d5a32d1f5d3a2d',
                 name: 'América Mineiro',
@@ -20,25 +22,25 @@ export class TeamService {
             },
         ];
         // TODO: Implementar busca na base.
-        return teams;
+        return clubs;
     }
 
     findOne(id: string) {
-        let team = {};
+        let club = {};
         // TODO: Implementar busca na base de dados.
-        return team;
+        return club;
     }
 
-    // Adicionar modelo Team
-    create(team: any) {
+    // Adicionar modelo club
+    create(club: any) {
         // TODO: Implementar inserção na base de dados.
-        return team;
+        return club;
     }
 
-    // Adicionar modelo Team
-    update(id: string, team: any) {
+    // Adicionar modelo club
+    update(id: string, club: any) {
         // TODO: Implementar update na base de dados.
-        return team;
+        return club;
     }
 
     delete(id: string) {
