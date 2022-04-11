@@ -1,11 +1,7 @@
-import { Kafka, Message } from "kafkajs";
+import { Kafka } from "kafkajs";
+import { MessagingInterface, ProduceMessage } from "../interfaces/messaging.interface";
 
-export interface ProduceMessage {
-    topic: string
-    messages: Message[]
-}
-
-export class KafkaProducer {
+export class KafkaProducer implements MessagingInterface {
     constructor(private client: Kafka) { }
 
     async produce(data: ProduceMessage) {
