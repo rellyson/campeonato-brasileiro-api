@@ -19,7 +19,7 @@ export const createExpressApp =(): Application => {
     app.use('/v1/times', clubRouter)
     app.use('/v1/jogadores', playerRouter);
     app.use('/v1/torneios', tournamentRouter);
-    app.use('/v1/transacoes', transactionRouter);
+    app.use('/v1/transferencias', transactionRouter);
     
     return app
 }

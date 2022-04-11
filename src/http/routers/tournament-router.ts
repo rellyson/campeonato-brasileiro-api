@@ -1,7 +1,12 @@
 import { Router } from 'express';
+import { Kafka } from 'kafkajs';
 import { MatchController } from '../../controllers/match-controller';
 import { TournamentController } from '../../controllers/tournament-controller';
 
+const kafkaClient = new Kafka({
+    clientId: '1',
+    brokers: ['kafka:29092'],
+})
 const tournamentController = new TournamentController();
 const matchController = new MatchController();
 const tournamentRouter = Router();
