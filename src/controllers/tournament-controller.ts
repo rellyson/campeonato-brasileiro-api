@@ -1,13 +1,20 @@
 import { Request, Response, NextFunction } from "express";
+import { TournamentService } from "../services/tournament-service";
 
 export class TournamentController {
-    getAll = (req: Request, res: Response, next: NextFunction) => {}
+    private service: TournamentService;
 
-    findOne = (req: Request, res: Response, next: NextFunction) => {}
+    constructor() {
+        this.service = new TournamentService()
+    }
 
-    create = (req: Request, res: Response, next: NextFunction) => {}
+    async getAllTournaments(req: Request, res: Response, next: NextFunction) { }
 
-    update = (req: Request, res: Response, next: NextFunction) => {}
+    async findTournamentById(req: Request, res: Response, next: NextFunction) { }
 
-    delete = (req: Request, res: Response, next: NextFunction) => {}
+    async createTournament(req: Request, res: Response, next: NextFunction) { }
+
+    async updateTournament(req: Request, res: Response, next: NextFunction) { }
+
+    async deleteTournament(req: Request, res: Response, next: NextFunction) { }
 }

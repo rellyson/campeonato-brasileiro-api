@@ -1,4 +1,5 @@
 import { PrismaClient } from "@prisma/client";
+import { TournamentCreateDTO } from "../dtos/create-tournament";
 import { NotFoundException } from "../exceptions/not-found-exception";
 import { TournamentServiceInterface } from "./interfaces/tournament-service.interface";
 
@@ -29,13 +30,13 @@ export class TournamentService implements TournamentServiceInterface {
     }
 
     // Adicionar modelo tournament
-    async createTournament(tournament: any) {
+    async createTournament(tournament: TournamentCreateDTO) {
         // TODO: Implementar inserção na base de dados.
         return tournament;
     }
 
     // Adicionar modelo tournament
-    async updateTournament(id: string, tournament: any) {
+    async updateTournament(id: string, tournament: TournamentCreateDTO) {
         // TODO: Implementar update na base de dados.
         return tournament;
     }
