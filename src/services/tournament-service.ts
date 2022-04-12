@@ -11,7 +11,6 @@ export class TournamentService implements TournamentServiceInterface {
     }
 
     async getAllTournaments() {
-        // TODO: Implementar busca na base.
         return await this.prisma.tounament.findMany();
     }
 
@@ -21,7 +20,7 @@ export class TournamentService implements TournamentServiceInterface {
                 id
             }
         });
-        
+
         if (!tournament) {
             throw new NotFoundException(`Tournament with id ${id} was not found`)
         }
@@ -31,7 +30,11 @@ export class TournamentService implements TournamentServiceInterface {
 
     // Adicionar modelo tournament
     async createTournament(tournament: TournamentCreateDTO) {
-        // TODO: Implementar inserção na base de dados.
+        await this.prisma.tounament.create({
+            data: {
+
+            }
+        })
         return tournament;
     }
 

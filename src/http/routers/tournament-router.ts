@@ -8,7 +8,7 @@ const kafkaClient = new Kafka({
     brokers: ['kafka:29092'],
 })
 const tournamentController = new TournamentController();
-const matchController = new MatchController();
+const matchController = new MatchController(kafkaClient);
 const tournamentRouter = Router();
 
 // tournament handling

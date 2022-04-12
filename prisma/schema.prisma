@@ -36,6 +36,10 @@ model Player {
   updatedAt    DateTime      @updatedAt
 }
 
+model Tounament {
+  id        String @id @default(auto()) @map("_id") @db.ObjectId
+}
+
 model Transaction {
   id         String   @id @default(auto()) @map("_id") @db.ObjectId
   Player     Player?  @relation(fields: [playerId], references: [id])
@@ -47,8 +51,4 @@ model Transaction {
   playerId   String?  @db.ObjectId
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
-}
-
-model Tounament {
-  id        String @id @default(auto()) @map("_id") @db.ObjectId
 }

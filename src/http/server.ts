@@ -16,8 +16,8 @@ export const createExpressApp =(): Application => {
         res.json({ code: 200, status: 'OK', dateTime: new Date().toISOString() });
     });
 
-    app.use('/v1/times', clubRouter)
     app.use('/v1/jogadores', playerRouter);
+    app.use('/v1/times', clubRouter)
     app.use('/v1/torneios', tournamentRouter);
     app.use('/v1/transferencias', transactionRouter);
     
