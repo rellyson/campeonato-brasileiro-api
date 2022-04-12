@@ -5,37 +5,37 @@ import { ClubService } from "../services/club-service";
 export class ClubController {
     constructor(private service: ClubService) { }
 
-    getAll = (req: Request, res: Response, next: NextFunction) => {
+    public async getAllClubs(req: Request, res: Response, next: NextFunction) {
         try {
-            let clubs = this.service.getAll();
+            let clubs = await this.service.getAllClubs();
             res.json(clubs);
         } catch (error) {
-            res.send('Internal Server Error').status(500);
+            res.status(500);
         }
     }
 
-    findOne = (req: Request, res: Response, next: NextFunction) => {
+    public async getClubById(req: Request, res: Response, next: NextFunction) {
         try {
             let id = req.params['id'];
-            let club = this.service.findOne(id);
+            let club = this.service.getClubById(id);
             res.json(club);
         } catch (error) {
             res.send('Internal Server Error').status(500);
         }
     }
 
-    create = (req: Request, res: Response, next: NextFunction) => {
+    public async createClub(req: Request, res: Response, next: NextFunction) {
         try {
             let club = req.body;
             console.log(req.body);
-            let clubCreated = this.service.create(club);
+            let clubCreated = this.service.createClub(club);
             res.send(clubCreated).status(200);
         } catch (error) {
             res.send('Internal Server Error').status(500);
         }
     }
 
-    update = (req: Request, res: Response, next: NextFunction) => {
+    public async update(req: Request, res: Response, next: NextFunction) {
         try {
             let id = req.params['id'];
             let club = req.body;
@@ -46,7 +46,7 @@ export class ClubController {
         }
     }
 
-    delete = (req: Request, res: Response, next: NextFunction) => {
+    public async delete(req: Request, res: Response, next: NextFunction) {
         try {
             let id = req.params['id'];
             this.service.delete(id);

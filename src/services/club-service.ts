@@ -1,44 +1,54 @@
+import { PrismaClient } from "@prisma/client";
+import { CreateClubDTO } from "../dtos/create-team";
+import { NotFoundException } from "../exceptions/not-found-exception";
 import { ClubServiceInterface } from "./interfaces/club-service.interface";
 
 export class ClubService implements ClubServiceInterface {
+    private prisma: PrismaClient;
 
-    getAll() {
-        let clubs = [
-            {
-                id: '2d53a2d53d2d5a32d1f5d3a2d',
-                name: 'América Mineiro',
-                city: 'BH',
-                state: 'MG',
-                country: 'BR',
-                stadium: 'Independência',
-            },
-            {
-                id: '2d53a2d5d2d52s21fd2d2s2sss',
-                name: 'Athletico Paranaense',
-                city: 'BH',
-                state: 'MG',
-                country: 'BR',
-                stadium: 'Independência',
-            },
-        ];
-        // TODO: Implementar busca na base.
-        return clubs;
+    constructor() {
+        this.prisma = new PrismaClient()
     }
 
-    findOne(id: string) {
-        let club = {};
-        // TODO: Implementar busca na base de dados.
+    async getAllClubs() {
+        try {
+            return await this.prisma.club.findMany();
+        } catch (error) {
+            return new Array();
+        }
+    }
+
+    async getClubById(id: string) {
+        const club = await this.prisma.club.findUnique({
+            where: {
+                id
+            }
+        })
+        
+        if (!club) {
+            throw new NotFoundException(`Club with id ${id} was not found`)
+        }
+
         return club;
     }
 
-    // Adicionar modelo club
-    create(club: any) {
-        // TODO: Implementar inserção na base de dados.
+    async createClub(data: CreateClubDTO) {
+        const club = await this.prisma.club.create({
+            data: {
+                abbreviation: data.abbreviation,
+                city: data.city,
+                country: data.country,
+                name: data.name,
+            }
+        }).catch((error) => {
+            console.log(`An error occurred while creating a club: ${error}`)
+            throw error
+        })
+
         return club;
     }
 
-    // Adicionar modelo club
-    update(id: string, club: any) {
+    async update(id: string, club: CreateClubDTO) {
         // TODO: Implementar update na base de dados.
         return club;
     }

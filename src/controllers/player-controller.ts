@@ -5,9 +5,13 @@ import { BadRequestException } from "../exceptions/bad-request-exception";
 
 export class PlayerController {
     constructor(private service: PlayerServiceInterface) {}
-    getAll = (req: Request, res: Response, next: NextFunction) => {}
+    async getAll (req: Request, res: Response, next: NextFunction) {
 
-    findOne = (req: Request, res: Response, next: NextFunction) => {}
+    }
+
+    async findOne (req: Request, res: Response, next: NextFunction) {
+        
+    }
 
     async create(req: Request, res: Response) {
         try {
@@ -25,7 +29,11 @@ export class PlayerController {
         }
     }
 
-    update = (req: Request, res: Response, next: NextFunction) => {}
+    async update (req: Request, res: Response, next: NextFunction) {
 
-    delete = (req: Request, res: Response, next: NextFunction) => {}
+    }
+
+    async delete (req: Request, res: Response, next: NextFunction) {
+
+    }
 }

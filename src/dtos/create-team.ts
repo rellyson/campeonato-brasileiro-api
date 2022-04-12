@@ -1,6 +1,7 @@
 import * as yup from "yup";
 
 export class CreateClubDTO {
+    abbreviation!: string;
     name!: string;
     transactions!: any[];
     city!: string;
@@ -9,6 +10,7 @@ export class CreateClubDTO {
     stadium!: string;
 
     constructor(data: {
+        abbreviation: string,
         name: string,
         transactions: any[],
         city: string,

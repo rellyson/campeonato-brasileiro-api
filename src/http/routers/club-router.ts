@@ -6,9 +6,9 @@ const service = new ClubService();
 const controller = new ClubController(service);
 const clubRouter = Router();
 
-clubRouter.get('/', controller.getAll);
-clubRouter.get('/:id', controller.findOne);
-clubRouter.post('/', controller.create);
+clubRouter.get('/', controller.getAllClubs);
+clubRouter.get('/:id', controller.getClubById);
+clubRouter.post('/', controller.createClub);
 clubRouter.put('/:id', controller.update);
 clubRouter.delete('/:id', controller.delete);
 
