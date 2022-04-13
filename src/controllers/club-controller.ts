@@ -3,10 +3,15 @@ import { NextFunction, Request, Response } from "express";
 import { ClubService } from "../services/club-service";
 
 export class ClubController {
-    constructor(private service: ClubService) { }
+    constructor(public service: ClubService) {
+        console.log('============================');
+        this.service = new ClubService();
+    }
 
     public async getAllClubs(req: Request, res: Response, next: NextFunction) {
         try {
+            console.log('this.service', this.service);
+            
             let clubs = await this.service.getAllClubs();
             res.json(clubs);
         } catch (error) {

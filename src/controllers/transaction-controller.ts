@@ -1,13 +1,15 @@
 import { Request, Response, NextFunction } from "express";
 
 export class TransactionController {
-    getAll = (req: Request, res: Response, next: NextFunction) => {}
+    constructor() {}
+    
+    getAll = async (req: Request, res: Response, next: NextFunction) => {}
 
-    findOne = (req: Request, res: Response, next: NextFunction) => {}
+    findOne = async (req: Request, res: Response, next: NextFunction) => {}
 
-    create = (req: Request, res: Response, next: NextFunction) => {}
+    create = async (req: Request, res: Response, next: NextFunction) => {}
 
-    update = (req: Request, res: Response, next: NextFunction) => {}
+    update = async (req: Request, res: Response, next: NextFunction) => {}
 
-    delete = (req: Request, res: Response, next: NextFunction) => {}
+    delete = async (req: Request, res: Response, next: NextFunction) => {}
 }

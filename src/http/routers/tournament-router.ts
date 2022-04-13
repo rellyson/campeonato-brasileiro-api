@@ -2,13 +2,20 @@ import { Router } from 'express';
 import { Kafka } from 'kafkajs';
 import { MatchController } from '../../controllers/match-controller';
 import { TournamentController } from '../../controllers/tournament-controller';
+import { KafkaProducer } from '../../messaging/kafka/kafka-producer';
+import { MatchService } from '../../services/match-service';
+import { TournamentService } from '../../services/tournament-service';
 
 const kafkaClient = new Kafka({
     clientId: '1',
     brokers: ['kafka:29092'],
 })
-const tournamentController = new TournamentController();
-const matchController = new MatchController(kafkaClient);
+
+const kafkaProducer = new KafkaProducer(kafkaClient);
+const matchService = new MatchService(kafkaProducer);
+const tournamentService = new TournamentService();
+const tournamentController = new TournamentController(tournamentService);
+const matchController = new MatchController(matchService);
 const tournamentRouter = Router();
 
 // tournament handling

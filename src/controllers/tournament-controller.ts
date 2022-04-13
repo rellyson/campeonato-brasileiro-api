@@ -1,12 +1,9 @@
 import { Request, Response, NextFunction } from "express";
+import { TournamentServiceInterface } from "../services/interfaces/tournament-service.interface";
 import { TournamentService } from "../services/tournament-service";
 
 export class TournamentController {
-    private service: TournamentService;
-
-    constructor() {
-        this.service = new TournamentService()
-    }
+    constructor(private service: TournamentServiceInterface) {}
 
     async getAllTournaments(req: Request, res: Response, next: NextFunction) { }
 

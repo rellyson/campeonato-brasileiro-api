@@ -12,8 +12,10 @@ export class ClubService implements ClubServiceInterface {
 
     async getAllClubs() {
         try {
+            console.log('Entrei aqui');
             return await this.prisma.club.findMany();
         } catch (error) {
+            console.log('Catch error => ', error);
             return new Array();
         }
     }

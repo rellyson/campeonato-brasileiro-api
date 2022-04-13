@@ -2,15 +2,11 @@ import { Request, Response } from "express";
 import { Kafka } from "kafkajs";
 import { MessagingInterface } from "../messaging/interfaces/messaging.interface";
 import { KafkaProducer } from "../messaging/kafka/kafka-producer";
+import { MatchServiceInterface } from "../services/interfaces/match-service.interface";
 import { MatchService } from "../services/match-service";
 
 export class MatchController {
-    private service: MatchService;
-
-    constructor(kafkaClient: Kafka) {
-        const kafkaProducer = new KafkaProducer(kafkaClient);
-        this.service = new MatchService(kafkaProducer);
-    }
+    constructor(private service: MatchServiceInterface) { }
 
     async startMatch(req: Request, res: Response) {
         try {
